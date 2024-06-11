@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+}
+// Apply the java plugin to add support for Java
+apply plugin: 'java'
+apply plugin: 'application'
+
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.21.0'
+
+
+    // https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
+    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.7.0'
+
+    // https://mvnrepository.com/artifact/org.testng/testng
+    implementation group: 'org.testng', name: 'testng', version: '7.10.2'
+
+}
+test {
+    useTestNG() {
+        suites 'src/test/resources/testng.xml'
+    }
+}
+//task startScript(type:Exec) {
+//    commandLine './selenium-run.sh'
+//}
+
+//run.dependsOn startScript
+
+//test.dependsOn startScript
+
+mainClassName = 'demo.App'
